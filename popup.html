@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Feed Customizer</title>
+    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="material-icons">play_circle_filled</span>
+                </div>
+                <div class="title-section">
+                    <h1>YouTube Feed Customizer</h1>
+                    <div class="status-row">
+                        <span class="material-icons" id="status-icon">check_circle</span>
+                        <span class="status-text" id="status-text">Extension Active</span>
+                    </div>
+                </div>
+                <button class="settings-btn" id="open-settings" title="Settings">
+                    <span class="material-icons">settings</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <div class="summary-card">
+                <div class="summary-content">
+                    <span id="summary-active">No features enabled</span>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-group">
+                    <label for="regular-columns">Columns (Regular Videos)</label>
+                    <div class="slider-container">
+                        <input type="range" id="regular-columns" name="regular-columns" min="1" max="10" value="4">
+                        <span class="slider-value" id="regular-columns-value">4</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="shortsColumnsSlider">Shorts Thumbnail Size</label>
+                    <div class="slider-container">
+                        <input type="range" id="shortsColumnsSlider" name="shorts-size" min="80" max="300" step="5" value="160">
+                        <span class="slider-value" id="shortsSizeValue">160px</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-header">
+                <h2>Settings</h2>
+                <button class="close-btn" id="close-settings" title="Close">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <div class="settings-content">
+                <!-- Cleaner UI section -->
+                <div class="settings-section-label">Cleaner UI</div>
+                <div class="cleaner-ui-grid">
+                    <label class="checkbox-label" title="Hide the left navigation sidebar for a distraction-free view.">
+                        <input type="checkbox" id="hide-sidebar">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Sidebar</span>
+                    </label>
+                    <label class="checkbox-label" title="Hide the comments section on video pages.">
+                        <input type="checkbox" id="hide-comments">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Comments</span>
+                    </label>
+                    <label class="checkbox-label" title="Hide the 'Up next' video suggestions.">
+                        <input type="checkbox" id="hide-suggestions">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Suggestions</span>
+                    </label>
+                    <label class="checkbox-label" title="Hide endscreen overlays at the end of videos.">
+                        <input type="checkbox" id="hide-endscreen">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Endscreen</span>
+                    </label>
+                    <label class="checkbox-label" title="Hide the playlist bar at the bottom when watching playlists.">
+                        <input type="checkbox" id="hide-playlist-bar">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Playlist Bar</span>
+                    </label>
+                    <label class="checkbox-label" title="Collapse or hide video descriptions by default.">
+                        <input type="checkbox" id="hide-description">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Description</span>
+                    </label>
+                    <label class="checkbox-label" title="Hide the live chat on live streams.">
+                        <input type="checkbox" id="hide-live-chat">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Hide Live Chat</span>
+                    </label>
+                    <label class="checkbox-label" title="Shrink the YouTube top bar for more vertical space.">
+                        <input type="checkbox" id="minimal-header">
+                        <span class="checkmark"></span>
+                        <span class="option-title">Minimal Header</span>
+                    </label>
+                </div>
+                <!-- QoL toggles (moved below Cleaner UI) -->
+                <div class="option-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="compact-mode">
+                        <span class="checkmark"></span>
+                        <div class="option-text">
+                            <span class="option-title">Compact Mode</span>
+                            <span class="option-description">Reduce padding and margins for a denser UI</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="option-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="show-tooltips">
+                        <span class="checkmark"></span>
+                        <div class="option-text">
+                            <span class="option-title">Show Tooltips</span>
+                            <span class="option-description">Enable tooltips for controls</span>
+                        </div>
+                    </label>
+                </div>
+                <!-- Main options (existing) -->
+                <div class="option-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="hide-shorts">
+                        <span class="checkmark"></span>
+                        <div class="option-text">
+                            <span class="option-title">Hide Shorts (Everywhere)</span>
+                            <span class="option-description">Hide all YouTube Shorts from your feed</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="option-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="hide-shorts-subs">
+                        <span class="checkmark"></span>
+                        <div class="option-text">
+                            <span class="option-title">Hide Shorts (Subscriptions Only)</span>
+                            <span class="option-description">Hide Shorts only in your Subscriptions feed</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="option-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="hide-watched">
+                        <span class="checkmark"></span>
+                        <div class="option-text">
+                            <span class="option-title">Hide Watched Videos</span>
+                            <span class="option-description">Hide videos you have already watched</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            <div class="settings-actions">
+                <button class="reset-btn" id="reset-options">
+                    <span class="material-icons">refresh</span>
+                    Reset to Defaults
+                </button>
+                <button class="reset-btn" id="reset-layout">
+                    <span class="material-icons">grid_view</span>
+                    Reset Only Layout
+                </button>
+                <button class="reset-btn" id="export-settings">
+                    <span class="material-icons">file_download</span>
+                    Export Settings
+                </button>
+                <button class="reset-btn" id="import-settings">
+                    <span class="material-icons">file_upload</span>
+                    Import Settings
+                </button>
+                <button class="reset-btn" id="about-help">
+                    <span class="material-icons">info</span>
+                    About / Help
+                </button>
+            </div>
+        </div>
+
+        <footer class="popup-footer">
+            <span>v1.0 • Modernized</span>
+        </footer>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html>
