@@ -1,6 +1,6 @@
 # YouTube Feed Customizer Extension
 
-A browser extension that allows users to customize and personalize their YouTube feed experience. It is opensource for anyone that whats to change it to their preference.
+A browser extension that allows users to customize and personalize their YouTube feed experience. It is open source for anyone that whats to change it to their preference.
 
 ## Features
 
